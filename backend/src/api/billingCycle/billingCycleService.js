@@ -16,7 +16,7 @@ BillingCycle.route("get", (req, res, next) => {
         errors: [error],
       });
     }
-  });
+  }) 
 });
 
 BillingCycle.route('count', (req, res, next) => {
