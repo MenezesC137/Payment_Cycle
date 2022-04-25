@@ -8,14 +8,14 @@ const creditSchema = new mongoose.Schema({
 
 const debtSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  value: { type: Number, min: 0, required: [true, 'Informe o valor débito!'] },
+  value: { type: Number, min: 0, required: [true, "Informe o valor débito!"] },
   status: {
     type: String,
     required: false,
     uppercase: true,
-    enum: ['PAGO', 'PENDETE', 'AGENDADO']
-  }
-})
+    enum: ["PAGO", "PENDETE", "AGENDADO"],
+  },
+});
 
 const billingCycleSchema = new mongoose.Schema({
   name: { type: String, required: true },
