@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
     next();
   } else {
     const token =
-      req.body.token || req.query.token || req.headers["authorization"];
+      req.body.token || req.query.token || req.headers["Authorization"];
 
     if (!token) {
       return res.status(403).send({ errors: ["No token provided."] });
