@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
   );
   res.header(
     "Access-Control-Allow-Headers",
-    "Origin, X-Requested-with, Content-Type, Accept"
+    "Origin, X-Requested-with, Content-Type, Accept, Authorization"
   );
   next();
 };
