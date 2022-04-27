@@ -47,20 +47,22 @@ const signup = (req, res, next) => {
   if (!email.match(emailRegex)) {
     return res.status(400).send({ errors: ["O e-mail informa está inválido"] });
   }
+
   if (!password.match(passwordRegex)) {
-    return res
-      .status(400)
-      .send({
-        errors: [
-          "Senha precisar ter: uma letra maiúscula, uma letra minúscula, um número, uma caractere especial(@#$%) e tamanho entre 6-20.",
-        ],
-      });
+    return res.status(400).send({
+      errors: [
+        "Senha precisar ter: uma letra maiúscula, uma letra minúscula, um número, uma caractere especial(@#$%) e tamanho entre 6-20.",
+      ],
+    });
   }
+
   const salt = bcrypt.genSaltSync();
   const passwordHash = bcrypt.hashSync(password, salt);
+
   if (!bcrypt.compareSync(confirmPassword, passwordHash)) {
     return res.status(400).send({ errors: ["Senhas não conferem."] });
   }
+
   User.findOne({ email }, (err, user) => {
     if (err) {
       return sendErrorsFromDB(res, err);
@@ -78,3 +80,5 @@ const signup = (req, res, next) => {
     }
   });
 };
+
+module.exports = { login, signup, validateToken };
