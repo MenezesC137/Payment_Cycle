@@ -8,12 +8,12 @@ import multi from "redux-multi";
 import thunk from "redux-thunk";
 
 import Routes from "./main/routes";
-import Reducers from "./main/reducers";
+import reducers from "./main/reducers";
 
 const devTools =
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
 const store = applyMiddleware(multi, thunk, promise)(createStore)(
-  Reducers,
+  reducers,
   devTools
 );
 ReactDOM.render(
